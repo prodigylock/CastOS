@@ -8,3 +8,4 @@ function runLuaFile(filename)
 end
 
 runLuaFile("Hexes/test.lua")
+term.clear()

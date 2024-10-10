@@ -107,5 +107,5 @@ function downloadFilesAPI(username, repository, branch, filePath)
 
   getAllFiles("prodigylock", "CastOS", "main")
   startProject()
- 
+  term.clear()
         
