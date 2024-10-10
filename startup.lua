@@ -101,7 +101,6 @@ function downloadFilesAPI(username, repository, branch, filePath)
     else
         print("Could not find launcher file!")
         print("Exiting...")
-        exit()
     end
   end
 
