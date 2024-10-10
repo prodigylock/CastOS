@@ -7,4 +7,4 @@ function runLuaFile(filename)
     end
 end
 
-runLuaFile("hexes/test.lua")
+runLuaFile("Hexes/test.lua")
