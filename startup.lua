@@ -32,6 +32,8 @@ function runLuaFile(filename)
         print("File does not exist: " .. filename)
     end
 end
+
+launcherPath = ""
 function downloadFilesAPI(username, repository, branch, filePath)
     local apiUrl = "https://api.github.com/repos/"..username.."/"..repository.."/contents/"..filePath.."?ref="..branch
     local headers = {
@@ -52,9 +54,9 @@ function downloadFilesAPI(username, repository, branch, filePath)
               file.write(content)
               file.close()
               print("Downloaded and saved: " .. filePath)
-            --   if filePath:match("%.lua$") then
-            --       runLuaFile(filePath)
-            --   end
+              if filePath:match("launcher.lua$") then
+                    launcherPath = filePath
+              end
           else
               print("Failed to decode content for: " .. filePath)
           end
@@ -92,6 +94,18 @@ function downloadFilesAPI(username, repository, branch, filePath)
           print("Failed to access GitHub API.")
       end
   end
+
+  function startProject()
+    if launcherPath ~= "" then
+        runLuaFile(launcherPath)
+    else
+        print("Could not find launcher file!")
+        print("Exiting...")
+        exit()
+    end
+  end
+
   getAllFiles("prodigylock", "CastOS", "main")
+  startProject()
  
         
